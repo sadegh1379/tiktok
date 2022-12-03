@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -15,7 +19,7 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   html {
     color-scheme: dark;
   }
@@ -23,4 +27,18 @@ a {
     color: white;
     background: black;
   }
+}
+
+.videos::-webkit-scrollbar{
+  width: 0px;
+}
+::-webkit-scrollbar{
+  width: 4px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgb(237, 237, 237);
+  border-radius: 40px;
+}
+::-webkit-scrollbar-track{
+  background-color: transparent;
 }
