@@ -15,14 +15,16 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <div>
-      <Navbar/>
-      <div className='flex gap-6 md:gap-20'>
-        <div className='h-[12vh] overflow-hidden xl:hover:overflow-auto'>
-          <Sidebar/>
+      <Navbar />
+      <div className='flex'>
+        <div className='flex gap-6 md:gap-20'>
+          <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
+            <Sidebar />
+          </div>
         </div>
-      </div>
-      <div className='mt-4 flex flex-1 flex-col gap-10 h-[88vh] videos'>
-        <Component {...pageProps} />
+        <div className='mt-4 flex flex-1 flex-col gap-10 h-[88vh] videos'>
+          <Component {...pageProps} />
+        </div>
       </div>
     </div>
   )
