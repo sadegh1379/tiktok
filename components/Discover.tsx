@@ -21,7 +21,7 @@ const Discover = () => {
                          <span className='font-semibold text-center'>
                               {item.icon}
                          </span>
-                         <span className='hidden xl:block font-semibold capitalize'>
+                         <span className='hidden xl:block font-semibold text-xs capitalize'>
                               {item.name}
                          </span>
                     </div>
