@@ -17,7 +17,7 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   html {
     color-scheme: dark;
   }
@@ -25,7 +25,7 @@ a {
     color: white;
     background: black;
   }
-}
+} */
 
 .videos::-webkit-scrollbar{
   width: 0px;

@@ -16,11 +16,11 @@ export default function Home({ videos }: VProp) {
   )
 }
 
-export const getServerSideProps = async () => {
-  const { data } = await axios.get('http://localhost:3000/api/post');
-  return{
-    props:{
-      videos: data
-    }
-  }
-}
+// export const getServerSideProps = async () => {
+//   const { data } = await axios.get('http://localhost:3000/api/post');
+//   return{
+//     props:{
+//       videos: data
+//     }
+//   }
+// }
