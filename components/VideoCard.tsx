@@ -25,6 +25,11 @@ const VideoCard = ({ post }: Post) => {
     }
   }
 
+  const handleMuteVideo = () => {
+    if(videoMuted) {
+      videoRef.current?.muted
+    }
+  }
   return (
     <div className="border-b-2 pb-3 border-gray-200 p-3">
       <div className='flex gap-3'>
@@ -32,8 +37,8 @@ const VideoCard = ({ post }: Post) => {
           <Link href="/">
             <>
               <Image
-                height={62}
-                width={62}
+                height={50}
+                width={50}
                 src={post.postedBy.image}
                 className="rounded-full"
                 alt={post.postedBy.userName}
@@ -70,26 +75,26 @@ const VideoCard = ({ post }: Post) => {
               {playing ? (
                 <button onClick={videoHandler}>
                   <BsFillPauseFill
-                  className='text-black text-2xl lg:text-3xl'
+                  className='text-white text-xl lg:text-2xl'
                   />
                 </button>
               ) : (
                 <button onClick={videoHandler}>
                   <BsFillPlayFill
-                  className='text-black text-2xl lg:text-3xl'
+                  className='text-white text-xl lg:text-2xl'
                   />
                 </button>
               )}
               {videoMuted ? (
                 <button onClick={() => setVideoMuted(false)}>
                   <HiVolumeOff
-                  className='text-black text-2xl lg:text-3xl'
+                  className='text-white text-xl lg:text-2xl'
                   />
                 </button>
               ) : (
                 <button onClick={() => setVideoMuted(true)}>
                   <HiVolumeUp
-                  className='text-black text-2xl lg:text-3xl'
+                  className='text-white text-xl lg:text-2xl'
                   />
                 </button>
               )}
