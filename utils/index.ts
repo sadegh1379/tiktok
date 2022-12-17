@@ -7,7 +7,7 @@ type User = {
   sub: String
 }
 
-export const createOrGetUser = (response: any) => {
+export const createOrGetUser = (response: any, addUser: any) => {
   const decodded: User = jwt_decode(response.credential);
   const { name, picture, sub } = decodded;
   const user = {
@@ -16,6 +16,7 @@ export const createOrGetUser = (response: any) => {
     userName: name,
     image: picture,
   }
+  addUser(user)
   axios.post('http://localhost:3000/api/auth', user);
 }
 

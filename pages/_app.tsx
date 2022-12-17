@@ -4,6 +4,8 @@ import '../styles/globals.css'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { store } from '../store'
+import { Provider } from 'react-redux'
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [isSSR, setIsSSR] = useState(true)
@@ -16,17 +18,19 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_LOGIN_API}`}>
-      <Navbar />
-      <div className='flex'>
-        <div className='flex gap-6 md:gap-20'>
-          <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
-            <Sidebar />
+      <Provider store={store}>
+        <Navbar />
+        <div className='flex'>
+          <div className='flex gap-6 md:gap-20'>
+            <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
+              <Sidebar />
+            </div>
+          </div>
+          <div className='mt-4 flex flex-1 flex-col gap-10 h-[88vh] videos'>
+            <Component {...pageProps} />
           </div>
         </div>
-        <div className='mt-4 flex flex-1 flex-col gap-10 h-[88vh] videos'>
-          <Component {...pageProps} />
-        </div>
-      </div>
+      </Provider>
     </GoogleOAuthProvider>
   )
 }

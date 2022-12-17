@@ -17,10 +17,10 @@ const Sidebar = () => {
   const userIsLogin = false;
   return (
     <div>
-      <div className='block xl:hidden m-2 ml-4 text-xl mt-3 cursor-pointer'
+      <div className='block xl:hidden m-2 text-xl mt-3 cursor-pointer'
         onClick={() => setShowSidebar(!showSidebar)}
       >
-        {showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />}
+        {showSidebar ? <ImCancelCircle className='mx-auto' /> : <AiOutlineMenu />}
       </div>
       {showSidebar && (
         <div className='w-20 xl:w-400 overflow-x-hidden flex flex-col justify-start mb-10 border-r-2 border-gray-300 
