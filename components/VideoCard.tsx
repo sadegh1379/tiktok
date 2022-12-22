@@ -39,19 +39,19 @@ const VideoCard = ({ post }: Post) => {
               <Image
                 height={50}
                 width={50}
-                src={post.postedBy.image}
+                src={post.postedBy?.image}
                 className="rounded-full"
-                alt={post.postedBy.userName}
+                alt={post.postedBy?.userName}
               />
             </>
           </Link>
         </div>
-        <div className='flex items-start gap-1'>
+        <div className='flex items-center gap-1'>
           <Link href="/">
-            <p className='text-primary font-semibold'>{post.postedBy.userName}</p>
+            <p className='text-primary font-semibold'>{post.postedBy?.userName}</p>
           </Link>
           <GoVerified className="text-blue-500 mt-1" />
-          <p className='text-gray-500 text-xs mt-1'>. {post.postedBy.userName}</p>
+          <p className='text-gray-500 text-xs mt-1'>. {post.postedBy?.userName}</p>
         </div>
       </div>
       <div className='lg:ml-20 flex gap-4 relative mt-3'
