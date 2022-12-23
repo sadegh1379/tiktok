@@ -17,6 +17,7 @@ const Upload = () => {
      const [caption, setCaption] = useState('');
      const [category, setCategory] = useState(topics[0].name);
      const [savingPost, setSavingPost] = useState(false);
+     const [postUploading, setPostUploading] = useState(false);
 
      const uploadVideo = async (e: any) => {
           setIsLoading(true)
@@ -39,6 +40,7 @@ const Upload = () => {
 
      const handlePost = async () => {
           if(caption && videoAsset?._id && category) {
+               setPostUploading(true);
                setSavingPost(true)
                const document = {
                     _type: 'post',
@@ -58,6 +60,7 @@ const Upload = () => {
                     topic: category
                }
                await axios.post('http://localhost:3000/api/post', document)
+               setPostUploading(false)
                router.push('/')
           }
      }
@@ -131,7 +134,7 @@ const Upload = () => {
                          <label>Choose a Category</label>
                          <select
                               value={category}
-                              onChange={(e) => setCaption(e.target.value)}
+                              onChange={(e) => setCategory(e.target.value)}
                               className='outline-none border-2 border-gray-200 p-2
                                    rounded cursor-pointer'
                          >
@@ -151,11 +154,12 @@ const Upload = () => {
                               </button>
                               <button
                                    onClick={handlePost}
+                                   disabled={postUploading}
                                    type='button'
                                    className='rounded outline-none w-28 lg:w-44 font-medium
                                    text-md p-2 text-white bg-[#F51997]'
                               >
-                                   Post
+                                   {postUploading ? 'posting...' : 'Post'}
                               </button>
                          </div>
                     </div>

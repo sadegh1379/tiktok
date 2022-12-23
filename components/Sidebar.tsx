@@ -34,7 +34,7 @@ const Sidebar = () => {
                 </div>
               </Link>
           </div>
-          {!userIsLogin && (
+          {/* {!userIsLogin && (
             <div className='hidden xl:block px-2 py-4'>
               <p className='text-gray-400 pl-2'>Login to add like and comments</p>
               <div className='pr-4'>
@@ -56,7 +56,7 @@ const Sidebar = () => {
                 />
               </div>
             </div>
-          )}
+          )} */}
           <Discover />
           <SuggestedAccount />
           <Footer />
