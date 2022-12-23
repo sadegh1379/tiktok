@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { BASE_URL } from '../utils';
 
 const Upload = () => {
      const router = useRouter();
@@ -59,7 +60,7 @@ const Upload = () => {
                     },
                     topic: category
                }
-               await axios.post('http://localhost:3000/api/post', document)
+               await axios.post(`${BASE_URL}/api/post`, document)
                setPostUploading(false)
                router.push('/')
           }
@@ -68,7 +69,7 @@ const Upload = () => {
           <div className='w-full h-full absolute left-0 top-[58px] mb-10 pt-10
           lg:pt-20 bg-[#f8f8f8]'>
                <div className='bg-white lg:p-14 p-5 mx-auto xl:h-[70vh] flex
-                gap-6 flex-wrap w-[60%] rounded-xl justify-between items-center'>
+                gap-6 flex-wrap w-[80%] text-center md:text-start rounded-xl justify-between items-center'>
                     <div>
                          <div>
                               <p className='font-semibold text-2xl'>Upload Video</p>

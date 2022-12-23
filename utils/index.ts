@@ -1,6 +1,8 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
 type User = {
   name: String
   picture: String
@@ -17,7 +19,7 @@ export const createOrGetUser = (response: any, addUser: any) => {
     image: picture,
   }
   addUser(user)
-  axios.post('http://localhost:3000/api/auth', user);
+  axios.post(`${BASE_URL}/api/auth`, user);
 }
 
 // export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;

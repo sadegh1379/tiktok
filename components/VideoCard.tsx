@@ -4,19 +4,22 @@ import React, { useState, useEffect, useRef } from 'react'
 import { GoVerified } from 'react-icons/go';
 import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs';
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi';
+import { MdNavigateNext } from 'react-icons/md';
+import { useRouter } from 'next/router';
 
 type Post = {
   post: Video
 }
 
 const VideoCard = ({ post }: Post) => {
+  const router = useRouter();
   const [isHover, setIsHover] = useState<Boolean>(false)
   const [playing, setPlaying] = useState<Boolean>(false)
   const [videoMuted, setVideoMuted] = useState<Boolean>(false)
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const videoHandler = () => {
-    if(playing) {
+    if (playing) {
       videoRef.current?.pause()
       setPlaying(false);
     } else {
@@ -26,7 +29,7 @@ const VideoCard = ({ post }: Post) => {
   }
 
   const handleMuteVideo = () => {
-    if(videoMuted) {
+    if (videoMuted) {
       videoRef.current?.muted
     }
   }
@@ -59,42 +62,46 @@ const VideoCard = ({ post }: Post) => {
         onMouseLeave={() => setIsHover(false)}
       >
         <div className='rounded-3xl relative'>
-          <video
-            src={post.video.asset.url}
-            className="w-[200px] h-[300px] lg:w-[600px]
+              <span onClick={() => router.push(`/detail/${post._id}`)} 
+              className='p-1 md:p-3 z-10 border-t-2 border-[#F51997] cursor-pointer rounded-bl-md rounded-br-md absolute
+              bottom-0 w-full text-center'>
+                  <MdNavigateNext className='mx-auto' color="#F51997" size={25}/>
+              </span>
+            <video
+              src={post.video.asset.url}
+              className="w-[200px] h-[300px] lg:w-[600px]
             lg:h-[530px] md:h-[400px] bg-gray-300 rounded-3xl"
-            loop
-            ref={videoRef}
-            onClick={videoHandler}
-          >
-
-          </video>
+              loop
+              ref={videoRef}
+              onClick={videoHandler}
+            >
+            </video>
           {isHover && (
-            <div className='absolute bottom-3 px-5 left-8 md:left-14
-            flex gap-10'>
+            <div className='absolute bottom-11 md:bottom-16 px-5
+            flex gap-5'>
               {playing ? (
                 <button onClick={videoHandler}>
                   <BsFillPauseFill
-                  className='text-white text-xl lg:text-2xl'
+                    className='text-[#F51997] text-xl lg:text-2xl'
                   />
                 </button>
               ) : (
                 <button onClick={videoHandler}>
                   <BsFillPlayFill
-                  className='text-white text-xl lg:text-2xl'
+                    className='text-[#F51997] text-xl lg:text-2xl'
                   />
                 </button>
               )}
               {videoMuted ? (
                 <button onClick={() => setVideoMuted(false)}>
                   <HiVolumeOff
-                  className='text-white text-xl lg:text-2xl'
+                    className='text-[#F51997] text-xl lg:text-2xl'
                   />
                 </button>
               ) : (
                 <button onClick={() => setVideoMuted(true)}>
                   <HiVolumeUp
-                  className='text-white text-xl lg:text-2xl'
+                    className='text-[#F51997] text-xl lg:text-2xl'
                   />
                 </button>
               )}
