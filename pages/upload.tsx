@@ -8,7 +8,7 @@ import { RootState } from '../store';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const upload = () => {
+const Upload = () => {
      const router = useRouter();
      const { userProfile }: any = useSelector((state: RootState) => state.auth)
      const [isLoading, setIsLoading] = useState(false);
@@ -164,4 +164,4 @@ const upload = () => {
      )
 }
 
-export default upload
+export default Upload
