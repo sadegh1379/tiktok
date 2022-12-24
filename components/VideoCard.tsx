@@ -62,20 +62,22 @@ const VideoCard = ({ post }: Post) => {
         onMouseLeave={() => setIsHover(false)}
       >
         <div className='rounded-3xl relative'>
-              <span onClick={() => router.push(`/detail/${post._id}`)} 
+              {/* <span onClick={() => router.push(`/detail/${post._id}`)} 
               className='p-1 md:p-3 z-10 border-t-2 border-[#F51997] cursor-pointer rounded-bl-md rounded-br-md absolute
               bottom-0 w-full text-center'>
                   <MdNavigateNext className='mx-auto' color="#F51997" size={25}/>
-              </span>
+              </span> */}
+            <Link href={`/detail/${post._id}`}>
             <video
               src={post.video.asset.url}
               className="w-[200px] h-[300px] lg:w-[600px]
             lg:h-[530px] md:h-[400px] bg-gray-300 rounded-3xl"
               loop
               ref={videoRef}
-              onClick={videoHandler}
+              // onClick={videoHandler}
             >
             </video>
+            </Link>
           {isHover && (
             <div className='absolute bottom-11 md:bottom-16 px-5
             flex gap-5'>

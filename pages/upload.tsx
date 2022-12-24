@@ -29,7 +29,6 @@ const Upload = () => {
                     contentType: selectedFile.type,
                     filename: selectedFile.name,
                }).then((data) => {
-                    console.log('data: ', data);
                     setVideoAsset(data);
                     setIsLoading(false);
                })
@@ -40,7 +39,7 @@ const Upload = () => {
      }
 
      const handlePost = async () => {
-          if(caption && videoAsset?._id && category) {
+          if (caption && videoAsset?._id && category) {
                setPostUploading(true);
                setSavingPost(true)
                const document = {
@@ -60,7 +59,8 @@ const Upload = () => {
                     },
                     topic: category
                }
-               await axios.post(`${BASE_URL}/api/post`, document)
+               await client.create(document)
+               // await axios.post(`${BASE_URL}/api/post`, document)
                setPostUploading(false)
                router.push('/')
           }
@@ -132,7 +132,7 @@ const Upload = () => {
                               type="text"
                               className='outline-none border-2 border-gray-200 rounded p-2'
                          />
-                         <label>Choose a Category</label>
+                         <label className='text-md font-medium'>Choose a Category</label>
                          <select
                               value={category}
                               onChange={(e) => setCategory(e.target.value)}
